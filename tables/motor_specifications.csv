@@ -1,0 +1,21 @@
+Parameter,Specification,Unit,Notes
+Motor Type,Single-phase high-speed brushed motor,,Used in vacuum cleaner drive units
+Rated Power,3-4,kW,
+Rated Voltage,110,V,
+Nominal Rotational Speed,~37000,rpm,Approximately 617 rev/s
+Sampling Frequency,65536,Hz,High-frequency acquisition
+Signal Duration,1,second,Each recording contains 65536 samples
+Samples per Recording,65536,samples,
+Physical Rotation Period,~1.6,ms,One mechanical rotation at nominal speed
+Load Condition,No-load (idle),,Factory end-of-line inspection
+Sensor (Vibration),LSD-1050B single-axis piezoelectric accelerometer,,Radially mounted on motor end cover
+Sensor (Acoustic),VK1213 industrial microphone,,Positioned 10-20 cm from motor
+Pre-amplifier,Acoustic channel only,,Vibration channel has no pre-amplifier
+Anti-aliasing Filter,Standard acquisition hardware only,,No additional signal-conditioning
+Environment,Room temperature; typical production environment,,No acoustic isolation
+Mounting,Screw-mounted at fixed position,,Same position for all motors
+Number of Samples (per modality),934,,362 normal + 62 spark + 510 vibrate
+Fault Type - Spark,Electrical brush-commutator abnormality,,Enamel wire breakage; rotor inter-turn short circuit; commutator machining deviation
+Fault Type - Vibrate,Mechanical imbalance,,Stator slot deformation; bearing damage; bearing cover deformation; bearing fit looseness
+Spark Motor Units,4,units,Naturally occurring in production
+Vibrate Motor Units,26,units,Naturally occurring in production

@@ -1,0 +1,75 @@
+Category,Model,Hyperparameter,Value,Notes
+Tree-Based,RandomForest,n_estimators,200,
+Tree-Based,RandomForest,max_depth,None (no limit),Default
+Tree-Based,RandomForest,random_state,42,
+Tree-Based,GradientBoosting,n_estimators,200,
+Tree-Based,GradientBoosting,learning_rate,0.1,Default
+Tree-Based,GradientBoosting,max_depth,3,Default
+Tree-Based,GradientBoosting,random_state,42,
+Tree-Based,LightGBM,n_estimators,200,
+Tree-Based,LightGBM,learning_rate,0.1,Default
+Tree-Based,LightGBM,num_leaves,31,Default
+Tree-Based,LightGBM,max_depth,-1 (no limit),Default
+Tree-Based,LightGBM,random_state,42,
+Tree-Based,ExtraTrees,n_estimators,300,
+Tree-Based,ExtraTrees,max_depth,20,
+Tree-Based,ExtraTrees,min_samples_split,5,
+Tree-Based,RandomForest_Enhanced,n_estimators,300,
+Tree-Based,RandomForest_Enhanced,max_depth,20,
+Tree-Based,RandomForest_Enhanced,min_samples_split,5,
+Tree-Based,GradientBoosting_Enhanced,n_estimators,300,
+Tree-Based,GradientBoosting_Enhanced,learning_rate,0.05,
+Tree-Based,GradientBoosting_Enhanced,max_depth,5,
+Tree-Based,AdaBoost,n_estimators,100,
+Tree-Based,AdaBoost,learning_rate,1.0,
+Tree-Based,Bagging,n_estimators,100,
+SVM,SVM (default),kernel,RBF,
+SVM,SVM (default),C,1.0,Default
+SVM,SVM (default),gamma,scale,Default
+SVM,SVM_RBF (enhanced),kernel,RBF,
+SVM,SVM_RBF (enhanced),C,10,
+SVM,SVM_RBF (enhanced),gamma,scale,
+SVM,SVM_Linear,kernel,Linear,
+SVM,SVM_Linear,C,1.0,
+SVM,SVM_Poly,kernel,Polynomial,
+SVM,SVM_Poly,degree,3,
+SVM,SVM_Poly,C,1.0,
+Neural Network (sklearn),MLP_Small,hidden_layer_sizes,(64),Single hidden layer
+Neural Network (sklearn),MLP_Small,activation,ReLU,
+Neural Network (sklearn),MLP_Small,max_iter,500,
+Neural Network (sklearn),MLP_Large,hidden_layer_sizes,"(128, 64)",Two hidden layers
+Neural Network (sklearn),MLP_Large,activation,ReLU,
+Neural Network (sklearn),MLP_Large,max_iter,500,
+Neural Network (sklearn),MLP_Deep,hidden_layer_sizes,"(128, 64, 32)",Three hidden layers
+Neural Network (sklearn),MLP_Deep,activation,ReLU,
+Neural Network (sklearn),MLP_Deep,max_iter,500,
+Transformer (PyTorch),Transformer-Small,d_model,64,
+Transformer (PyTorch),Transformer-Small,nhead,4,
+Transformer (PyTorch),Transformer-Small,num_layers,3,
+Transformer (PyTorch),Transformer-Small,dim_feedforward,256,4 x d_model
+Transformer (PyTorch),Transformer-Small,dropout,0.1,
+Transformer (PyTorch),Transformer-Medium,d_model,128,
+Transformer (PyTorch),Transformer-Medium,nhead,8,
+Transformer (PyTorch),Transformer-Medium,num_layers,6,
+Transformer (PyTorch),Transformer-Medium,dim_feedforward,512,4 x d_model
+Transformer (PyTorch),Transformer-Medium,dropout,0.1,
+Transformer (PyTorch),Transformer-Large,d_model,256,
+Transformer (PyTorch),Transformer-Large,nhead,8,
+Transformer (PyTorch),Transformer-Large,num_layers,8,
+Transformer (PyTorch),Transformer-Large,dim_feedforward,1024,4 x d_model
+Transformer (PyTorch),Transformer-Large,dropout,0.1,
+Training (Transformer),All Transformer configs,optimizer,Adam,
+Training (Transformer),All Transformer configs,learning_rate,0.001,
+Training (Transformer),All Transformer configs,weight_decay,1e-4,
+Training (Transformer),All Transformer configs,batch_size,32,
+Training (Transformer),All Transformer configs,max_epochs,50,
+Training (Transformer),All Transformer configs,early_stopping_patience,10,
+Training (Transformer),All Transformer configs,LR scheduler,ReduceLROnPlateau,patience=5; factor=0.5
+Training (Transformer),All Transformer configs,input_seq_length,512,Downsampled from 65536
+Other,KNN,n_neighbors,5,
+Other,KNN,weights,distance,
+Other,LogisticRegression,solver,lbfgs,
+Other,LogisticRegression,max_iter,1000,
+Other,NaiveBayes,(all defaults),,GaussianNB
+Other,Ensemble (VotingClassifier),estimators,"RF + GB + SVM",
+Other,Ensemble (VotingClassifier),voting,soft,

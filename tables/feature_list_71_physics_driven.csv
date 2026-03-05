@@ -1,0 +1,72 @@
+No,Category,Feature_Name,English_Name,Physical_Interpretation
+1,Time-Domain Statistical,均值,Mean,Signal DC component; reflects static bias
+2,Time-Domain Statistical,标准差,Standard Deviation,Signal fluctuation amplitude
+3,Time-Domain Statistical,方差,Variance,Signal power / energy dispersion
+4,Time-Domain Statistical,最小值,Min,Signal lower bound
+5,Time-Domain Statistical,最大值,Max,Signal upper bound
+6,Time-Domain Statistical,极差,Range (Max-Min),Signal dynamic range
+7,Time-Domain Statistical,中位数,Median,Central tendency (robust to outliers)
+8,Time-Domain Statistical,偏度,Skewness,Amplitude distribution asymmetry; reflects impact direction
+9,Time-Domain Statistical,峭度,Kurtosis,Amplitude distribution peakedness; sensitive to impulse/transient faults
+10,Time-Domain Statistical,均方根值,RMS,Effective signal value; directly reflects vibration energy
+11,Time-Domain Statistical,总能量,Energy (sum of x^2),Total signal energy
+12,Time-Domain Statistical,平均功率,Power (Energy/N),Energy per unit time
+13,Time-Domain Statistical,峰峰值,Peak-to-Peak,Maximum amplitude swing; sensitive to mechanical looseness
+14,Time-Domain Statistical,波峰因子,Crest Factor (Max/RMS),Detects impulsive faults (e.g. brush sparking)
+15,Time-Domain Statistical,波形因子,Form Factor (RMS/Mean|x|),Waveform shape descriptor
+16,Time-Domain Statistical,过零率,Zero-Crossing Rate,Rough estimate of signal frequency
+17,Hjorth Parameters,Hjorth Activity,Hjorth Activity,Signal variance; characterizes signal activity level
+18,Hjorth Parameters,Hjorth Mobility,Hjorth Mobility,Std(1st derivative)/Std(signal); characterizes dominant frequency
+19,Hjorth Parameters,Hjorth Complexity,Hjorth Complexity,Waveform complexity; normal signals are regular while faulty signals are complex
+20,Nonlinear and Subwindow,样本熵,Sample Entropy,Signal regularity and complexity measure
+21,Nonlinear and Subwindow,排列熵,Permutation Entropy,Ordinal pattern-based complexity measure
+22,Nonlinear and Subwindow,子窗口RMS最大值,Subwindow RMS Max,Captures transient burst events (local RMS maximum)
+23,Nonlinear and Subwindow,子窗口峭度最大值,Subwindow Kurtosis Max,Captures transient burst events (local kurtosis maximum)
+24,Basic Spectral,重心频率,Spectral Centroid,Spectrum center of gravity; reflects main vibration frequency
+25,Basic Spectral,频谱带宽,Spectral Bandwidth,Frequency dispersion; usually increases under fault conditions
+26,Basic Spectral,谱滚降频率,Spectral Rolloff,Frequency below which 85% of spectral energy is concentrated
+27,Basic Spectral,频谱平坦度,Spectral Flatness,Near 1 = white noise; near 0 = tonal; distinguishes random vibration from periodic faults
+28,Basic Spectral,频谱斜率,Spectral Slope,Rate of spectral energy decay across frequency
+29,Basic Spectral,频谱峭度,Spectral Kurtosis,Frequency-domain peakedness; sensitive to burst frequency components
+30,Basic Spectral,主频率,Dominant Frequency,Frequency component with maximum energy
+31,Basic Spectral,主频幅值,Dominant Magnitude,Amplitude at dominant frequency
+32,Multi-Scale Band Energy,低频段0能量 (0-50Hz),Low Band 0 Energy,Motor fundamental frequency band energy
+33,Multi-Scale Band Energy,低频段0峰值 (0-50Hz),Low Band 0 Peak,Motor fundamental frequency band peak
+34,Multi-Scale Band Energy,低频段1能量 (50-100Hz),Low Band 1 Energy,Low-order harmonic energy
+35,Multi-Scale Band Energy,低频段1峰值 (50-100Hz),Low Band 1 Peak,Low-order harmonic peak
+36,Multi-Scale Band Energy,低频段2能量 (100-200Hz),Low Band 2 Energy,Rotor imbalance frequency band
+37,Multi-Scale Band Energy,低频段2峰值 (100-200Hz),Low Band 2 Peak,Rotor imbalance peak
+38,Multi-Scale Band Energy,低频段3能量 (200-500Hz),Low Band 3 Energy,Mechanical resonance band
+39,Multi-Scale Band Energy,低频段3峰值 (200-500Hz),Low Band 3 Peak,Mechanical resonance peak
+40,Multi-Scale Band Energy,中频段0能量 (500-1kHz),Mid Band 0 Energy,Structural vibration energy
+41,Multi-Scale Band Energy,中频段0峰值 (500-1kHz),Mid Band 0 Peak,Structural vibration peak
+42,Multi-Scale Band Energy,中频段1能量 (1k-2kHz),Mid Band 1 Energy,Bearing inner race defect band
+43,Multi-Scale Band Energy,中频段1峰值 (1k-2kHz),Mid Band 1 Peak,Bearing defect peak
+44,Multi-Scale Band Energy,中频段2能量 (2k-5kHz),Mid Band 2 Energy,Bearing outer race / cage frequency band
+45,Multi-Scale Band Energy,中频段2峰值 (2k-5kHz),Mid Band 2 Peak,Bearing outer race peak
+46,Multi-Scale Band Energy,中频段3能量 (5k-10kHz),Mid Band 3 Energy,High-frequency mechanical vibration
+47,Multi-Scale Band Energy,中频段3峰值 (5k-10kHz),Mid Band 3 Peak,High-frequency mechanical peak
+48,Multi-Scale Band Energy,高频段0能量 (10k-15kHz),High Band 0 Energy,Electrical arcing / brush sparking band
+49,Multi-Scale Band Energy,高频段0峰值 (10k-15kHz),High Band 0 Peak,Electrical arcing peak
+50,Multi-Scale Band Energy,高频段1能量 (15k-20kHz),High Band 1 Energy,High-frequency electrical noise
+51,Multi-Scale Band Energy,高频段1峰值 (15k-20kHz),High Band 1 Peak,High-frequency noise peak
+52,Multi-Scale Band Energy,高频段2能量 (20k-25kHz),High Band 2 Energy,Ultrasonic-band energy
+53,Multi-Scale Band Energy,高频段2峰值 (20k-25kHz),High Band 2 Peak,Ultrasonic-band peak
+54,Multi-Scale Band Energy,高频段3能量 (25k-32kHz),High Band 3 Energy,Near-Nyquist frequency energy
+55,Multi-Scale Band Energy,高频段3峰值 (25k-32kHz),High Band 3 Peak,Near-Nyquist peak
+56,Energy Distribution Ratio,低频能量比,Low Frequency Ratio,Proportion of energy in low-frequency sub-bands
+57,Energy Distribution Ratio,中频能量比,Mid Frequency Ratio,Proportion of energy in mid-frequency sub-bands
+58,Energy Distribution Ratio,高频能量比,High Frequency Ratio,Proportion of energy in high-frequency sub-bands
+59,Advanced Spectral,倒谱峰值,Cepstrum Peak,Detects periodic spectral components (e.g. gear mesh harmonics)
+60,Advanced Spectral,倒谱均值,Cepstrum Mean,Average cepstral magnitude
+61,Advanced Spectral,倒谱峰值数,Cepstrum Num Peaks,Number of significant cepstral peaks
+62,Advanced Spectral,包络谱峰值,Envelope Spectrum Peak,Standard in bearing fault diagnosis (Hilbert transform)
+63,Advanced Spectral,包络谱均值,Envelope Spectrum Mean,Average envelope spectral magnitude
+64,Advanced Spectral,包络谱峰值数,Envelope Spectrum Num Peaks,Number of significant envelope spectral peaks
+65,Advanced Spectral,谐波能量比,Harmonic Energy Ratio,Proportion of energy at motor fundamental frequency harmonics
+66,Mechanical Band Ratio,极低频带比 (0-10Hz),Very Low Band Ratio,DC and very low frequency content
+67,Mechanical Band Ratio,低频带比 (10-100Hz),Low Band Ratio,Motor fundamental and low harmonics
+68,Mechanical Band Ratio,电机频带比 (100-1kHz),Motor Band Ratio,Motor operating frequency band
+69,Mechanical Band Ratio,轴承频带比 (1k-5kHz),Bearing Band Ratio,Bearing characteristic frequency band
+70,Mechanical Band Ratio,齿轮频带比 (5k-15kHz),Gear Band Ratio,Gear meshing frequency band
+71,Mechanical Band Ratio,高频带比 (15k-32kHz),High Band Ratio,High-frequency electrical/noise band
