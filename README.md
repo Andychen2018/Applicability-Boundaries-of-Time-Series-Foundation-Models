@@ -1,196 +1,147 @@
-# Applicability Boundaries of Time Series Foundation Models
+# Applicability Boundaries of Time-Series Foundation Models
 
-This repository contains comprehensive implementations and experiments for analyzing the applicability boundaries of time series foundation models in motor fault diagnosis applications. The project systematically compares traditional machine learning, deep learning, and foundation models to understand their strengths and limitations in industrial fault detection scenarios.
+**Data-Layer Mismatch in Industrial Motor Fault Diagnosis**
 
-## Research Objectives
+> Z. Chen, K. Song, X. Lv, and G. Guo, "Applicability Boundaries of Time-Series Foundation Models: Data-Layer Mismatch in Industrial Motor Fault Diagnosis," *IEEE Access*, 2025.
 
-- Investigate the performance boundaries of time series foundation models (Chronos, Moment, TimesFM) in motor fault diagnosis
-- Compare foundation models against traditional ML and deep learning approaches
-- Explore different feature extraction and fine-tuning strategies for foundation models
-- Analyze model performance across different data modalities (acoustic, vibration, fusion)
-- Provide comprehensive benchmarking and analysis tools for time series classification
-
-## Project Structure
-
-```
-.
-├── data_processing/              # Data loading and preprocessing modules
-├── feature_engineering/          # Feature extraction modules
-├── traditional_ml/               # Traditional machine learning models
-├── deep_learning/                # Deep learning models (CNN, LSTM, BiLSTM, Attention)
-├── foundation_models/            # Foundation model implementations (Chronos, Moment, TimesFM)
-├── finetune_chronos/             # Chronos fine-tuning experiments
-├── anomaly_detection/            # Unsupervised anomaly detection methods
-├── evaluation/                   # Model evaluation and visualization utilities
-├── 01_statistical_ml_models.py   # Statistical and traditional ML experiments
-├── 02_deep_learning_models.py    # Deep learning model experiments
-├── 03_chronos_models.py          # Chronos foundation model experiments
-├── 04_transformer_models.py      # Transformer-based model experiments
-├── 05_comprehensive_analysis.py  # Comprehensive result analysis
-├── 06_model_ranking.py           # Model performance ranking
-└── 07_chronos_residual_classification.py # Residual-based classification
-```
-
-## Main Experiment Scripts
-
-### 1. Statistical and Traditional ML Models
-- **01_statistical_ml_models.py** / **01_fast_statistical_ml.py**
-  - Extract time-domain and frequency-domain features (mean, std, RMS, FFT, PSD, etc.)
-  - Train traditional ML classifiers: Random Forest, SVM, Gradient Boosting, Logistic Regression
-  - Support three classification modes: ShengYing (acoustic), ZhenDong (vibration), Fusion (combined)
-
-### 2. Deep Learning Models
-- **02_deep_learning_models.py** / **02_enhanced_ml_models.py**
-  - CNN (Convolutional Neural Networks) for temporal pattern recognition
-  - LSTM/BiLSTM for sequence modeling
-  - Attention-based models for feature importance
-  - ResNet and Transformer variants
-
-### 3. Foundation Models
-- **03_chronos_models.py**
-  - Use Chronos as feature extractor and classifier
-  - Extract embeddings from pre-trained models
-  - Compare with traditional feature extraction
-
-- **04_transformer_models.py**
-  - Transformer-based time series classification
-  - Self-attention mechanisms for temporal patterns
-
-### 4. Analysis and Evaluation
-- **05_comprehensive_analysis.py** - Aggregate and compare all model results
-- **06_model_ranking.py** - Rank models by performance metrics
-- **07_chronos_residual_classification.py** - Novel residual-based classification approach
-
-## Installation
-
-### Prerequisites
-- Python 3.8+
-- PyTorch
-- CUDA-capable GPU (optional, for faster training)
-
-### Required Packages
-```bash
-pip install torch numpy pandas scikit-learn scipy matplotlib seaborn joblib tqdm
-pip install chronos-forecasting momentfm
-```
-
-## Usage
-
-### Run Individual Experiments
-```bash
-python 01_statistical_ml_models.py
-python 02_deep_learning_models.py
-python 03_chronos_models.py
-python 05_comprehensive_analysis.py
-```
-
-### Fine-tune Chronos Models
-```bash
-cd finetune_chronos
-python method_a_residual.py      # Residual-based approach
-python method_b_embedding.py     # Embedding extraction
-python method_c_all_class.py     # Multi-class fine-tuning
-```
-
-## Data Format
-
-Expected data structure:
-```
-data/
-├── ShengYing/          # Acoustic signal data
-│   ├── Normal/
-│   ├── Fault1/
-│   └── Fault2/
-├── ZhenDong/           # Vibration signal data
-│   ├── Normal/
-│   ├── Fault1/
-│   └── Fault2/
-└── Fusion/             # Combined data
-    ├── Normal/
-    ├── Fault1/
-    └── Fault2/
-```
-
-## Models Implemented
-
-### Traditional Machine Learning
-- Random Forest, SVM, Gradient Boosting, Logistic Regression, Naive Bayes, Extra Trees
-
-### Deep Learning
-- CNN, LSTM, BiLSTM, Attention Models, ResNet, Transformer
-
-### Foundation Models
-- Chronos (Amazon), Moment, TimesFM (Google)
-
-## Fine-tuning Strategies
-
-### Method A: Residual-based Classification
-- Use Chronos to predict normal patterns
-- Classify faults based on prediction residuals
-
-### Method B: Embedding Extraction
-- Extract embeddings from Chronos encoder
-- Use as features for downstream classifiers
-
-### Method C: Multi-class Fine-tuning
-- Fine-tune Chronos on all fault classes
-- End-to-end training for classification
-
-## Evaluation Metrics
-
-- Accuracy, Precision, Recall, F1-Score
-- Confusion Matrix
-- Cross-validation Scores
-- Model Ranking and Comparison
+This repository provides the complete code, raw data, and configuration tables for reproducing the experiments described in the paper. The study conducts a controlled comparison of 606 experimental configurations across traditional ML, deep learning, and time-series foundation models (Chronos-Bolt, MOMENT) for industrial motor fault diagnosis.
 
 ---
 
-## Supplementary Materials (Revision)
-
-The following materials were added in response to reviewer comments.
-
-### Raw Data (`rawdata/`)
-
-Industrial motor sensor recordings collected during factory end-of-line inspection at 65,536 Hz.
+## Repository Structure
 
 ```
-rawdata/
-├── ZhenDong/           # Vibration signals (piezoelectric accelerometer)
-│   ├── normal/         # 362 recordings
-│   ├── spark/          # 62 recordings (electrical brush-commutator fault)
-│   └── vibrate/        # 510 recordings (mechanical imbalance fault)
-└── ShengYing/          # Acoustic signals (industrial microphone)
-    ├── normal/         # 362 recordings
-    ├── spark/          # 62 recordings
-    └── vibrate/        # 510 recordings
+.
+├── rawdata/                        # Raw industrial sensor data (1,868 recordings)
+│   ├── ZhenDong/                   #   Vibration signals (65,536 Hz)
+│   │   ├── normal/                 #     362 healthy motor recordings
+│   │   ├── spark/                  #     62 electrical fault recordings
+│   │   └── vibrate/                #     510 mechanical fault recordings
+│   └── ShengYing/                  #   Acoustic signals (65,536 Hz)
+│       ├── normal/                 #     362 healthy motor recordings
+│       ├── spark/                  #     62 electrical fault recordings
+│       └── vibrate/                #     510 mechanical fault recordings
+│
+├── experiments/                    # Main experiment scripts (run in order)
+│   ├── 01_statistical_ml.py        #   Traditional ML: RF, SVM, LightGBM, etc.
+│   ├── 02_enhanced_ml.py           #   Enhanced ML: tuned SVM, MLP, ensembles
+│   ├── 03_chronos_models.py        #   Chronos-Bolt embedding + classifiers
+│   ├── 04_transformer_models.py    #   Lightweight Transformer (Small/Medium/Large)
+│   ├── 05_comprehensive_analysis.py#   Cross-paradigm result aggregation
+│   ├── 06_model_ranking.py         #   Performance ranking across 606 configs
+│   ├── 07_chronos_residual_classification.py  # Residual-based fault detection
+│   └── 08_device_level_split.py    #   Device-level split evaluation (new)
+│
+├── models/                         # Model architecture definitions
+│   ├── traditional_ml.py           #   sklearn-based ML pipeline
+│   ├── deep_learning.py            #   CNN, LSTM, Transformer (PyTorch)
+│   ├── advanced_deep_learning.py   #   ResNet, attention variants
+│   ├── foundation_models.py        #   TSFM wrappers (Chronos, MOMENT)
+│   ├── moment_chronos_pipeline.py  #   MOMENT + Chronos unified pipeline
+│   └── unsupervised_anomaly.py     #   Unsupervised anomaly detection baselines
+│
+├── feature_engineering/            # Feature extraction
+│   └── feature_extractor_full.py   #   Complete 71-dim physics-driven features
+│
+├── data_processing/                # Data loading and preprocessing
+│   ├── data_loader.py              #   Multi-modal data loader
+│   ├── data_utils.py               #   Utility functions
+│   └── preprocessor.py             #   Signal preprocessing pipeline
+│
+├── finetune_chronos/               # Chronos fine-tuning experiments
+│   ├── 00_data_process.py          #   Data preparation for fine-tuning
+│   ├── data_split.py               #   Device-aware train/val/test splitting
+│   ├── method_a_residual.py        #   Method A: Normal-only + residual features
+│   ├── method_b_embedding.py       #   Method B: Normal-only + embedding features
+│   ├── method_c_all_class.py       #   Method C: All-class + embedding features
+│   └── feature_extraction_classification.py  # Unified feature extraction + classification
+│
+├── evaluation/                     # Evaluation and visualization
+│   ├── experiment_tracker.py       #   Experiment logging
+│   └── visualizer.py               #   Result visualization
+│
+├── tables/                         # Specification and configuration tables
+│   ├── feature_list_71_physics_driven.csv  # 71 features with physical interpretations
+│   ├── motor_specifications.csv            # Motor, sensor, and fault descriptions
+│   └── model_hyperparameters.csv           # Hyperparameters for all models
+│
+├── .gitignore
+└── README.md
 ```
 
-Total: 934 samples x 2 modalities = 1,868 one-second recordings.
+---
 
-### Supplementary Experiment Scripts
+## Raw Data
 
-| Script | Description |
-|--------|-------------|
-| `08_device_level_split.py` | Device-level split experiment ensuring no motor unit appears in both train and test sets |
-| `08_device_level_evaluation.py` | Evaluation utilities for device-level split experiments |
-| `09_feature_extractor_full.py` | Complete 71-dimensional physics-driven feature extraction pipeline |
+Each CSV file contains a **one-second recording** sampled at **65,536 Hz**. Data were collected during factory end-of-line inspection of single-phase high-speed brushed motors (~37,000 rpm) under no-load conditions.
 
-### Configuration Tables (`tables/`)
+| Modality | Class | Samples | Fault Description |
+|----------|-------|---------|-------------------|
+| Vibration (`ZhenDong`) | normal | 362 | Healthy operation |
+| Vibration (`ZhenDong`) | spark | 62 | Electrical brush-commutator fault (4 motor units) |
+| Vibration (`ZhenDong`) | vibrate | 510 | Mechanical imbalance (26 motor units) |
+| Acoustic (`ShengYing`) | normal | 362 | Healthy operation |
+| Acoustic (`ShengYing`) | spark | 62 | Electrical brush-commutator fault |
+| Acoustic (`ShengYing`) | vibrate | 510 | Mechanical imbalance |
 
-| Table | Description |
-|-------|-------------|
-| `feature_list_71_physics_driven.csv` | All 71 hand-crafted features with physical interpretations |
-| `motor_specifications.csv` | Motor type, rated power/voltage/speed, sensor configuration, fault descriptions |
-| `model_hyperparameters.csv` | Hyperparameters for all evaluated models (LightGBM, SVM, Transformer, MLP, etc.) |
+---
+
+## Quick Start
+
+### Prerequisites
+
+```bash
+pip install torch numpy pandas scikit-learn scipy matplotlib seaborn lightgbm joblib tqdm
+pip install chronos-forecasting momentfm
+```
+
+### Run Experiments
+
+```bash
+# Traditional ML (statistical features + classifiers)
+python experiments/01_statistical_ml.py
+
+# Enhanced ML (tuned hyperparameters, ensembles)
+python experiments/02_enhanced_ml.py
+
+# Foundation models
+python experiments/03_chronos_models.py
+python experiments/04_transformer_models.py
+
+# Analysis and ranking
+python experiments/05_comprehensive_analysis.py
+python experiments/06_model_ranking.py
+
+# Device-level split evaluation (reviewer-requested)
+python experiments/08_device_level_split.py
+```
+
+### Fine-tune Chronos
+
+```bash
+cd finetune_chronos
+python method_a_residual.py      # Normal-only fine-tuning + residual classification
+python method_b_embedding.py     # Normal-only fine-tuning + embedding classification
+python method_c_all_class.py     # All-class fine-tuning + embedding classification
+```
+
+---
+
+## Key Results
+
+Traditional ML pipelines based on 71 physics-driven features consistently outperform TSFMs by ~5.35 pp in Accuracy, Macro-F1, and AUROC under small-sample, noisy industrial conditions. The study identifies **Data-Layer Mismatch** as the structural root cause and proposes a **Threefold Alignment Principle**: temporal-scale alignment, representation-task alignment, and aggregation-robustness alignment.
+
+---
 
 ## Citation
 
 ```bibtex
 @article{chen2025applicability,
-  title={Applicability Boundaries of Time-Series Foundation Models: Data-Layer Mismatch in Industrial Motor Fault Diagnosis},
-  author={Chen, Zhiqiang and Song, Kangkang and Lv, Xintong and Guo, Guodong},
-  journal={IEEE Access},
-  year={2025}
+  title   = {Applicability Boundaries of Time-Series Foundation Models:
+             Data-Layer Mismatch in Industrial Motor Fault Diagnosis},
+  author  = {Chen, Zhiqiang and Song, Kangkang and Lv, Xintong and Guo, Guodong},
+  journal = {IEEE Access},
+  year    = {2025}
 }
 ```
 
