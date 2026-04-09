@@ -31,6 +31,7 @@ This repository provides the complete code, raw data, and configuration tables f
 │   ├── 06_model_ranking.py         #   Performance ranking across 606 configs
 │   ├── 07_chronos_residual_classification.py  # Residual-based fault detection
 │   └── 08_device_level_split.py    #   Device-level split evaluation (new)
+│   └── 09_weak_feature_baseline.py  # Weak-feature baseline (reviewer response)
 │
 ├── models/                         # Model architecture definitions
 │   ├── traditional_ml.py           #   sklearn-based ML pipeline
@@ -131,6 +132,10 @@ python method_c_all_class.py     # All-class fine-tuning + embedding classificat
 
 Traditional ML pipelines based on 71 physics-driven features consistently outperform TSFMs by ~5.35 pp in Accuracy, Macro-F1, and AUROC under small-sample, noisy industrial conditions. The study identifies **Data-Layer Mismatch** as the structural root cause and proposes a **Threefold Alignment Principle**: temporal-scale alignment, representation-task alignment, and aggregation-robustness alignment.
 
+### Weak-Feature Baseline (Supplementary Experiment)
+- **Weak-10**: 10 basic time-domain statistics (mean, std, rms, skewness, kurtosis, min, max, range, median, iqr)
+- **Full**: All ML features used in the device-level evaluation
+- **TSFM**: Chronos-t5-base embedding (768-dim) + RandomForest
 ---
 
 ## Citation
